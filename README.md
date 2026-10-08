@@ -11,7 +11,7 @@ Website portfolio pribadi yang menampilkan profil, project, sertifikat, dan laya
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](#)
 [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](#)
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-000000?style=for-the-badge&logo=vercel&logoColor=white)](#)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-000000?style=for-the-badge&logo=github&logoColor=white)](https://yovanhayon-ctrl.github.io/Portfolio/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](#lisensi)
 
 </div>
