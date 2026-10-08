@@ -96,6 +96,11 @@ body {
   line-height: 1.85;
 }
 
+/* Paragraf pengantar di bawah judul section, dibatasi lebarnya agar enak dibaca */
+.section-muted-narrow {
+  max-width: 560px;
+}
+
 /* ============================================
    SCROLL ANIMATIONS
    ============================================ */
@@ -424,25 +429,12 @@ body {
   border: 1px solid var(--border2);
   overflow: hidden;
 }
-.profile-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(160deg, #0d1f4e 0%, #132454 50%, #0a1535 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .profile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-.avatar-svg {
-  width: 200px;
-  height: 260px;
-}
-
 .ring {
   position: absolute;
   border-radius: 50%;
@@ -619,13 +611,6 @@ body {
   );
   background-size: 25px 25px;
 }
-.about-avatar {
-  width: 180px;
-  height: 220px;
-  position: relative;
-  z-index: 2;
-}
-
 .about-image {
   width: 100%;
   height: 100%;
@@ -723,16 +708,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-.project-thumb {
-  font-size: 3rem;
-  transition: transform 0.4s ease;
-  position: relative;
-  z-index: 1;
-}
-.project-card:hover .project-thumb {
-  transform: scale(1.12);
-}
-
 .project-overlay {
   position: absolute;
   inset: 0;
@@ -1412,9 +1387,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Klik di area luar menutup modal, jadi kursornya dibuat seperti tombol */
+  cursor: pointer;
 }
 
 .cert-modal-content {
+  cursor: default;
   background: var(--navy2);
   border: 1px solid var(--border2);
   border-radius: 20px;
@@ -1504,15 +1482,6 @@ body {
   border-top: 1px solid var(--border);
   padding: 1.2rem;
   text-align: right;
-}
-
-/* Close modal when clicking outside */
-.cert-modal.active {
-  cursor: pointer;
-}
-
-.cert-modal-content {
-  cursor: default;
 }
 
 /* ============================================

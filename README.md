@@ -39,7 +39,7 @@ Repository ini berisi source code website portfolio pribadi Yoseph, seorang maha
 ## Preview
 
 <div align="center">
-  <img src="images/hero.jpg" alt="Preview Hero Section" width="800">
+  <img src="images/og-preview.jpg" alt="Preview Hero Section" width="800">
 </div>
 
 ## Fitur
@@ -97,17 +97,17 @@ Portfolio/
 ├── index.html          # Seluruh halaman (single page) — semua section ada di sini
 ├── style.css           # Custom styling, tema gelap, dan media query responsif
 ├── script.js           # Typing effect, scroll animation, navbar, form, modal sertifikat
+├── favicon.svg         # Ikon tab browser
 ├── README.md
-├── HAKI.pdf
-├── images/             # Foto profil, hero, dan thumbnail project
-│   ├── hero.jpg
-│   ├── me.jpg
-│   ├── Yoseph.jpg
+├── .gitignore
+├── images/             # Foto profil dan thumbnail project
 │   ├── Yoseph Kewena.jpeg
 │   ├── bengkel.jpg
 │   ├── SneakHub.jpg
-│   └── rmsaungtiga.jpg
+│   ├── rmsaungtiga.jpg
+│   └── og-preview.jpg  # Gambar pratinjau saat tautan dibagikan ke media sosial
 └── sertifikat/         # Berkas sertifikat (PDF & gambar) yang dibuka lewat modal
+    ├── CV.pdf          # Diunduh lewat tombol "Download CV" di hero
     ├── dicoding_dasar_ai.pdf
     ├── dicoding_pemula.pdf
     ├── dicoding_python.pdf
