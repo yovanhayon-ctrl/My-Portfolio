@@ -181,6 +181,30 @@ body {
   width: calc(100% - 1.2rem);
 }
 
+/* Di menu mobile tautan menjadi blok selebar layar, sehingga garis hover
+   ikut memanjang sampai ujung. Tautan dijadikan grid dengan kolom selebar
+   isinya: kotak tautan tetap selebar penuh agar area kliknya luas, tetapi
+   garisnya ditempatkan di sel yang sama dengan teks sehingga hanya selebar
+   teks itu sendiri. */
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    display: grid;
+    grid-template-columns: max-content;
+    justify-content: start;
+  }
+  .navbar-nav .nav-link::after {
+    /* Dibiarkan mengalir sebagai item grid kedua, tepat di bawah teks.
+       Penempatan eksplisit ke sel yang sama justru mendorong teks ke baris
+       berikutnya sehingga garisnya muncul di atas teks. */
+    position: static;
+    margin-top: 2px;
+  }
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link:focus-visible::after {
+    width: 100%;
+  }
+}
+
 .btn-nav-cta {
   background: var(--blue2);
   color: #fff !important;
