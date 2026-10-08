@@ -90,16 +90,55 @@ function initScrollAnimations() {
 // ===== NAVBAR SCROLL EFFECT =====
 function initNavbar() {
   const navbar = document.getElementById("navbar");
+  const menu = document.getElementById("navMenu");
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 50) {
-      navbar.style.boxShadow = "0 4px 20px rgba(59, 130, 246, 0.1)";
-      navbar.style.backdropFilter = "blur(10px)";
-    } else {
-      navbar.style.boxShadow = "none";
-      navbar.style.backdropFilter = "blur(0px)";
+  // Pasang kelas .scrolled, bukan inline style. Latar solid dan blur-nya
+  // sudah didefinisikan di CSS, sebelumnya tidak pernah aktif.
+  window.addEventListener(
+    "scroll",
+    function () {
+      navbar.classList.toggle("scrolled", window.scrollY > 50);
+
+      // Menu mobile yang terbuka ikut tertutup begitu halaman digulir,
+      // tanpa perlu menekan tombol hamburger lagi.
+      if (menu.classList.contains("show")) {
+        tutupMenuMobile();
+      }
+    },
+    { passive: true }
+  );
+
+  // Menutup menu saat menyentuh area di luar navbar
+  document.addEventListener("click", function (e) {
+    if (menu.classList.contains("show") && !navbar.contains(e.target)) {
+      tutupMenuMobile();
     }
   });
+
+  // Menutup menu dengan tombol Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && menu.classList.contains("show")) {
+      tutupMenuMobile();
+    }
+  });
+
+  // Navbar diberi latar solid selama menu terbuka, meski halaman masih
+  // di posisi paling atas, agar teks menu tidak tertimpa isi di belakangnya.
+  menu.addEventListener("show.bs.collapse", function () {
+    navbar.classList.add("menu-open");
+  });
+  menu.addEventListener("hidden.bs.collapse", function () {
+    navbar.classList.remove("menu-open");
+  });
+}
+
+function tutupMenuMobile() {
+  const menu = document.getElementById("navMenu");
+  if (!menu) return;
+  const instance =
+    bootstrap.Collapse.getInstance(menu) ||
+    new bootstrap.Collapse(menu, { toggle: false });
+  instance.hide();
 }
 
 // ===== FORM HANDLING =====
@@ -230,12 +269,9 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         block: "start",
       });
 
-      // Close mobile menu if open
-      const navMenu = document.getElementById("navMenu");
-      if (navMenu.classList.contains("show")) {
-        const toggler = document.querySelector(".navbar-toggler");
-        toggler.click();
-      }
+      // Tutup menu mobile lewat API Bootstrap, bukan dengan menekan
+      // tombol toggler secara tiruan
+      tutupMenuMobile();
     }
   });
 });

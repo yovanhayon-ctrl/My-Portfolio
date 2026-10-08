@@ -138,6 +138,16 @@ body {
   padding: 0.75rem 0;
 }
 
+/* Menu mobile terbuka: navbar wajib punya latar solid walau halaman masih
+   di posisi teratas, kalau tidak teks menu menumpuk dengan isi di belakang */
+#navbar.menu-open {
+  background: rgba(10, 15, 30, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: 700;
@@ -1326,6 +1336,15 @@ body {
   .footer-contact a {
     justify-content: center;
   }
+  /* Navigasi dibuat dua kolom di ponsel. Enam tautan yang menumpuk vertikal
+     membuat footer hampir setinggi satu layar penuh. */
+  .footer-links:not(.footer-contact) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 7rem));
+    justify-content: center;
+    column-gap: 1.5rem;
+    row-gap: 0.65rem;
+  }
   .footer-bottom {
     flex-direction: column;
     justify-content: center;
@@ -1492,8 +1511,16 @@ body {
   .section-dark {
     padding: 5rem 0;
   }
+  /* Di layar kecil, min-height 100vh pada section ditambah min-height pada
+     row saling menumpuk dengan padding atas, sehingga isi hero terdorong jauh
+     ke bawah dan menyisakan ruang kosong di bawah navbar. Keduanya dilepas
+     agar hero mengikuti tinggi isinya sendiri. */
   .hero-section {
-    padding: 6rem 0 4rem;
+    min-height: auto;
+    padding: 5.5rem 0 3rem;
+  }
+  .hero-row {
+    min-height: auto;
   }
   .about-card {
     height: 400px;
